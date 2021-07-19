@@ -11,14 +11,13 @@ const myChgMenu = () => {
         var random_seasoning = seasonings[Math.floor(Math.random()*seasonings.length)]
         
         var menu = `${random_main_course} ${random_technique}, avec ${random_side} ${random_seasoning}`
-        console.log(e);
-    e.preventDefault();
     document.getElementById('fixMenu').innerHTML = menu;
     });
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    myChgMenu();   
+    myChgMenu(); 
+    closePopup();
 });
 
 function onMouseOut(event) {
@@ -30,15 +29,14 @@ function onMouseOut(event) {
       // Show the popup
       document.getElementById("popup").style.display = "block";
     }
-  }
+};
   
   document.addEventListener("mouseout", onMouseOut);
 
-//bouton avec event listener onlick "changer le menu"
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+};
 
-document.addEventListener("mouseleave", function(e){
-    if( e.clientY < 0 )
-    {
-         alert("Merci de nous visiter dans le restaurant qui vit en 3021. ;)");
-    }
-}, false);
+document.getElementById("exitbtn").addEventListener("click", closePopup);
+
+//bouton avec event listener onlick "changer le menu"
